@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+      body {
+        padding: 100px 0;
+        background-color: #c33;
+        /* font-family: 'Pacifico', cursive; */
+        font-family: 'Fredoka One', cursive;
+      }
+
+      #heart {
+        display: none;
+        position: relative;
+        width: 100px;
+        height: 90px;
+        animation: heartbeat 1s infinite;
+        margin: 0 auto;
+      }
+      #heart:before,
+      #heart:after {
+        position: absolute;
+        content: '';
+        left: 50px;
+        top: 0;
+        width: 50px;
+        height: 80px;
+        background: #fff;
+        -moz-border-radius: 50px 50px 0 0;
+        border-radius: 50px 50px 0 0;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-transform-origin: 0 100%;
+        -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+        -o-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+      }
+      #heart:after {
+        left: 0;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transform-origin: 100% 100%;
+        -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+        -o-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+      }
+
+      @keyframes heartbeat {
+        0% {
+          transform: scale(0.75);
+        }
+        20% {
+          transform: scale(1);
+        }
+        40% {
+          transform: scale(0.75);
+        }
+        60% {
+          transform: scale(1);
+        }
+        80% {
+          transform: scale(0.75);
+        }
+        100% {
+          transform: scale(0.75);
+        }
+      }
+
+      /* CSS */
+      .button-85 {
+        padding: 0.6em 2em;
+        border: none;
+        outline: none;
+        color: rgb(255, 255, 255);
+        background: #111;
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
+
+      .button-85:before {
+        content: '';
+        background: linear-gradient(
+          45deg,
+          #ff0000,
+          #ff7300,
+          #fffb00,
+          #48ff00,
+          #00ffd5,
+          #002bff,
+          #7a00ff,
+          #ff00c8,
+          #ff0000
+        );
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        -webkit-filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing-button-85 20s linear infinite;
+        transition: opacity 0.3s ease-in-out;
+        border-radius: 10px;
+      }
+
+      @keyframes glowing-button-85 {
+        0% {
+          background-position: 0 0;
+        }
+        50% {
+          background-position: 400% 0;
+        }
+        100% {
+          background-position: 0 0;
+        }
+      }
+
+      .button-85:after {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #222;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+      }
+      .container {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+      }
+      .peri {
+        padding-bottom: 50px;
+        display: flex;
+        justify-content: center;
+        color: #fff;
+        font-size: 32px;
+        display: none;
+      }
+      .interval1,
+      .interval2,
+      .interval3,
+      .interval4,
+      .interval5 {
+        padding-bottom: 50px;
+        display: flex;
+        justify-content: center;
+        color: #fff;
+        font-size: 24px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="heart"></div>
+      <div class="peri">Peri</div>
+      <div class="interval1">this is a reminder</div>
+      <div class="interval2">that you are the most beautiful girl</div>
+      <div class="interval3">and sexy bad *****</div>
+      <div class="interval4">and don't you ever forget it :)</div>
+      <div class="interval5" style="font-size: 50px">❤ 💕 💖 💗</div>
+
+      <button
+        class="button-85"
+        role="button"
+        style="font-family: 'Pacifico', cursive; font-size: 1rem"
+      >
+        click me :)
+      </button>
+    </div>
+
+    <script>
+      let container = document.querySelector('.container');
+      let heart = document.querySelector('#heart');
+      let button = document.querySelector('.button-85');
+      let peri = document.querySelector('.peri');
+      let interval1 = document.querySelector('.interval1');
+      let interval2 = document.querySelector('.interval2');
+      let interval3 = document.querySelector('.interval3');
+      let interval4 = document.querySelector('.interval4');
+      let interval5 = document.querySelector('.interval5');
+
+      button.addEventListener('click', function () {
+        heart.style.display = 'block';
+        peri.style.display = 'flex';
+        container.removeChild(button);
+        setTimeout(showInterval1, 4000);
+        setTimeout(showInterval2, 6000);
+        setTimeout(showInterval3, 8000);
+        setTimeout(showInterval4, 10000);
+        setTimeout(showInterval5, 12000);
+      });
+
+      function showInterval1() {
+        interval1.style.display = 'flex';
+      }
+
+      function showInterval2() {
+        interval2.style.display = 'flex';
+      }
+
+      function showInterval3() {
+        interval3.style.display = 'flex';
+      }
+
+      function showInterval4() {
+        interval4.style.display = 'flex';
+      }
+
+      function showInterval5() {
+        interval5.style.display = 'flex';
+      }
+    </script>
+  </body>
+</html>
